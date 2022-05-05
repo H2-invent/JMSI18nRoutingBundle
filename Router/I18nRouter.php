@@ -97,9 +97,8 @@ class I18nRouter extends Router
 
     /**
      * {@inheritdoc}
-     * @return string
      */
-    public function generate($name, $parameters = array(), $referenceType = self::ABSOLUTE_PATH)
+    public function generate($name, $parameters = array(), $referenceType = self::ABSOLUTE_PATH): string
     {
         // determine the most suitable locale to use for route generation
         $currentLocale = $this->context->getParameter('_locale');
@@ -146,18 +145,12 @@ class I18nRouter extends Router
         return $generator->generate($name, $parameters, $referenceType);
     }
 
-    /**
-     * @return array
-     */
-    public function match($url)
+    public function match($url): array
     {
         return $this->matchI18n(parent::match($url), $url);
     }
 
-    /**
-     * @return RouteCollection
-     */
-    public function getRouteCollection()
+    public function getRouteCollection(): RouteCollection
     {
         $collection = parent::getRouteCollection();
 
@@ -173,7 +166,7 @@ class I18nRouter extends Router
      * To make compatible with Symfony <2.4
      * @return array
      */
-    public function matchRequest(Request $request)
+    public function matchRequest(Request $request): array
     {
         $matcher = $this->getMatcher();
         $pathInfo = $request->getPathInfo();
