@@ -1,5 +1,5 @@
 {
-    "name":         "jms/i18n-routing-bundle",
+    "name":         "gjuric/i18n-routing-bundle",
     "description":  "This bundle allows you to create i18n routes.",
     "keywords":     ["translation","multilanguage","routing"],
     "homepage": "http://jmsyst.com/bundles/JMSI18nRoutingBundle",       
@@ -21,7 +21,7 @@
     },
     "require-dev": {
         "sensio/framework-extra-bundle": "*",
-        "symfony/symfony": "^4.4|^5.0",
+        "symfony/symfony": "^4.4|^5.0|^6.0",
         "phpunit/phpunit": "^8.0|^9.0"
     },
     "suggest": {
