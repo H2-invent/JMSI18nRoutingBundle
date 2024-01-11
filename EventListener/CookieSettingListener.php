@@ -35,9 +35,16 @@ class CookieSettingListener
 
     public function onKernelResponse(ResponseEvent $event): void
     {
-        //Check if the current response contains an error. If it does, do not set the cookie as the Locale may not be properly set
-        if (HttpKernelInterface::MASTER_REQUEST !== $event->getRequestType() || !($event->getResponse()->isSuccessful() || $event->getResponse()->isRedirection())) {
-            return;
+        // HttpKernelInterface::MASTER_REQUEST was removed in Symfony 7.0
+        if (defined(HttpKernelInterface::class.'::MASTER_REQUEST')) {
+            //Check if the current response contains an error. If it does, do not set the cookie as the Locale may not be properly set
+            if (HttpKernelInterface::MASTER_REQUEST !== $event->getRequestType() || !($event->getResponse()->isSuccessful() || $event->getResponse()->isRedirection())) {
+                return;
+            }
+        } else {
+            if (HttpKernelInterface::MAIN_REQUEST !== $event->getRequestType() || !($event->getResponse()->isSuccessful() || $event->getResponse()->isRedirection())) {
+                return;
+            }
         }
 
         $request = $event->getRequest();
