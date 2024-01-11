@@ -50,9 +50,18 @@ class LocaleChoosingListener
 
     public function onKernelException(ExceptionEvent $event): void
     {
-        if (HttpKernelInterface::MASTER_REQUEST !== $event->getRequestType()) {
-            return;
+        // HttpKernelInterface::MASTER_REQUEST was removed in Symfony 7.0
+        if (defined(HttpKernelInterface::class.'::MASTER_REQUEST')) {
+            if (HttpKernelInterface::MASTER_REQUEST !== $event->getRequestType()) {
+                return;
+            }
+        } else {
+            if (HttpKernelInterface::MAIN_REQUEST !== $event->getRequestType()) {
+                return;
+            }
         }
+
+
 
         $request = $event->getRequest();
         if ('' !== rtrim($request->getPathInfo(), '/')) {
