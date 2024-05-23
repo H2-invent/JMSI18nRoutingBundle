@@ -45,13 +45,6 @@ final class Configuration implements ConfigurationInterface
                             }
                         }
 
-                        if (!in_array($v['default_locale'], $v['locales'], true)) {
-                            $ex = new InvalidConfigurationException('Invalid configuration at path "jms_i18n_routing.default_locale": The default locale must be one of the configured locales.');
-                            $ex->setPath('jms_i18n_routing.default_locale');
-
-                            throw $ex;
-                        }
-
                         return $v;
                     })
                 ->end()

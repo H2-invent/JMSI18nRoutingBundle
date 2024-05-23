@@ -18,6 +18,7 @@
 
 namespace JMS\I18nRoutingBundle;
 
+use JMS\I18nRoutingBundle\DependencyInjection\Compiler\CheckDefaultLocaleCompilerPass;
 use JMS\I18nRoutingBundle\DependencyInjection\JMSI18nRoutingExtension;
 use Symfony\Component\DependencyInjection\Compiler\ResolveDefinitionTemplatesPass;
 use JMS\I18nRoutingBundle\DependencyInjection\Compiler\SetRouterPass;
@@ -35,6 +36,7 @@ class JMSI18nRoutingBundle extends Bundle
     public function build(ContainerBuilder $container): void
     {
         $container->addCompilerPass(new SetRouterPass());
+        $container->addCompilerPass(new CheckDefaultLocaleCompilerPass());
     }
 
     public function getContainerExtension(): ?ExtensionInterface

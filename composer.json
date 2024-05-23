@@ -1,5 +1,5 @@
 {
-    "name":         "gjuric/i18n-routing-bundle",
+    "name":         "h2invent/i18n-routing-bundle",
     "description":  "This bundle allows you to create i18n routes.",
     "keywords":     ["translation","multilanguage","routing"],
     "homepage": "http://jmsyst.com/bundles/JMSI18nRoutingBundle",       
@@ -13,6 +13,11 @@
         {
             "name": "Albert Casademont",
             "email": "albertcasademont@gmail.com"
+        }
+    ,
+        {
+            "name": "Emanuel Holzmann",
+            "email": "entwicklung@h2-invnet.com"
         }
     ],
     "require": {
